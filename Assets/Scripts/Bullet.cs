@@ -48,12 +48,13 @@ public class Bullet : MonoBehaviour
 	}
 
 	void DoBulletHit() {
-		// TODO:  What if it's an exploding bullet with an area of effect?
+		
 
 		if(radius == 0) {
 			target.GetComponent<Enemy>().TakeDamage(damage);
 		}
-		else {
+		else 
+		{
 			Collider[] cols = Physics.OverlapSphere(transform.position, radius);
 
 			foreach(Collider c in cols) {

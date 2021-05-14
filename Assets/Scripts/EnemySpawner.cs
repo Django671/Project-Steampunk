@@ -59,11 +59,8 @@ public class EnemySpawner : MonoBehaviour
 				}
 				else 
 				{
-					// That was the last wave -- what do we want to do?
-					// What if instead of DESTROYING wave objects,
-					// we just made them inactive, and then when we run
-					// out of waves, we restart at the first one,
-					// but double all enemy HPs or something?
+					// That was the last wave 
+					// I might add something here.
 				}
 
 				Destroy(gameObject);
