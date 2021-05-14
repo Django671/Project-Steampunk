@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour 
+{
 
 	GameObject pathGO;
 
@@ -15,11 +16,13 @@ public class Enemy : MonoBehaviour {
 	public int moneyValue = 1;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		pathGO = GameObject.Find("Path");
 	}
 
-	void GetNextPathNode() {
+	void GetNextPathNode() 
+	{
 		if(pathNodeIndex < pathGO.transform.childCount) {
 			targetPathNode = pathGO.transform.GetChild(pathNodeIndex);
 			pathNodeIndex++;
@@ -31,11 +34,14 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(targetPathNode == null) {
+	void Update () 
+	{
+		if(targetPathNode == null) 
+		{
 			GetNextPathNode();
-			if(targetPathNode == null) {
-				// We've run out of path!
+			if(targetPathNode == null) 
+			{
+				// End of the path, No more nodes. Register as path reached!!!
 				ReachedGoal();
 				return;
 			}
@@ -45,14 +51,16 @@ public class Enemy : MonoBehaviour {
 
 		float distThisFrame = speed * Time.deltaTime;
 
-		if(dir.magnitude <= distThisFrame) {
+		if(dir.magnitude <= distThisFrame) 
+		{
 			// We reached the node
 			targetPathNode = null;
 		}
-		else {
-			// TODO: Consider ways to smooth this motion.
+		else 
+		{
+			
 
-			// Move towards node
+			// Move towards path node
 			transform.Translate( dir.normalized * distThisFrame, Space.World );
 			Quaternion targetRotation = Quaternion.LookRotation( dir );
 			this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime*5);
@@ -60,12 +68,15 @@ public class Enemy : MonoBehaviour {
 
 	}
 
-	void ReachedGoal() {
+	void ReachedGoal() 
+	{
+		//  
 		GameObject.FindObjectOfType<ScoreManager>().LoseLife();
 		Destroy(gameObject);
 	}
 
-	public void TakeDamage(float damage) {
+	public void TakeDamage(float damage) 
+	{
 		health -= damage;
 		if(health <= 0) 
 		{
@@ -73,8 +84,8 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void Die() {
-		// TODO: Do this more safely!
+	public void Die() 
+	{	
 		GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
 		Destroy(gameObject);
 	}

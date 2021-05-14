@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : MonoBehaviour 
+{
 
 	public int lives = 20;
 	public int money = 100;
@@ -11,18 +12,22 @@ public class ScoreManager : MonoBehaviour {
 	public Text moneyText;
 	public Text livesText;
 
-	public void LoseLife(int l = 1) {
+	public void LoseLife(int l = 1) 
+	{
 		lives -= l;
+		// If Lives less than or Equal to 0. set game over function
 		if(lives <= 0) 
 		{
 			GameOver();
 		}
 	}
 
-	public void GameOver() {
+	public void GameOver() 
+	{
 		Debug.Log("Game Over");
-		// TODO: Send the player to a game-over screen instead!
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		//Send the player to a game-over screen 
+		SceneManager.LoadScene("EndGame");
+		 // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	void Update() 

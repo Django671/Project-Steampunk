@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour 
+{
 
 	float spawnCD = 0.25f;
 	float spawnCDremaining = 5;
 
 	[System.Serializable]
-	public class WaveComponent {
+	public class WaveComponent 
+	{
 		public GameObject enemyPrefab;
 		public int num;
 		[System.NonSerialized]
@@ -16,22 +18,27 @@ public class EnemySpawner : MonoBehaviour {
 
 	public WaveComponent[] waveComps;
 
-	// Use this for initialization
-	void Start () {
+	
+	void Start () 
+	{
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		spawnCDremaining -= Time.deltaTime;
-		if(spawnCDremaining < 0) {
+		if(spawnCDremaining < 0) 
+		{
 			spawnCDremaining = spawnCD;
 
 			bool didSpawn = false;
 
 			// Go through the wave comps until we find something to spawn;
-			foreach(WaveComponent wc in waveComps) {
-				if(wc.spawned < wc.num) {
+			foreach(WaveComponent wc in waveComps) 
+			{
+				if(wc.spawned < wc.num) 
+				{
 					// Spawn it!
 					wc.spawned++;
 					Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation);
@@ -41,14 +48,17 @@ public class EnemySpawner : MonoBehaviour {
 				}
 			}
 
-			if(didSpawn == false) {
+			if(didSpawn == false) 
+			{
 				// Wave must be finished to spawn another
 				
 
-				if(transform.parent.childCount > 1) {
+				if(transform.parent.childCount > 1) 
+				{
 					transform.parent.GetChild(1).gameObject.SetActive(true);
 				}
-				else {
+				else 
+				{
 					// That was the last wave -- what do we want to do?
 					// What if instead of DESTROYING wave objects,
 					// we just made them inactive, and then when we run

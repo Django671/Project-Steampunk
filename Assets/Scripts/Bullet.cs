@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : MonoBehaviour 
+{
 
 	public float speed = 15f;
 	public Transform target;
 	public float damage = 1f;
 	public float radius = 0;
 
-	// Use this for initialization
-	void Start () {
+
+	void Start () 
+	{
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(target == null) {
+	void Update () 
+	{
+		if(target == null) 
+		{
 			// Our enemy went away!
 			Destroy(gameObject);
 			return;
@@ -26,12 +30,14 @@ public class Bullet : MonoBehaviour {
 
 		float distThisFrame = speed * Time.deltaTime;
 
-		if(dir.magnitude <= distThisFrame) {
+		if(dir.magnitude <= distThisFrame) 
+		{
 			// We reached the node
 			DoBulletHit();
 		}
-		else {
-			// TODO: Consider ways to smooth this motion.
+		else 
+		{
+		
 
 			// Move towards node
 			transform.Translate( dir.normalized * distThisFrame, Space.World );
@@ -59,7 +65,7 @@ public class Bullet : MonoBehaviour {
 			}
 		}
 
-		// TODO: Maybe spawn a cool "explosion" object here?
+		
 
 		Destroy(gameObject);
 	}

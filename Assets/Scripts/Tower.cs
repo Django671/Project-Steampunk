@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower : MonoBehaviour {
+public class Tower : MonoBehaviour 
+{
 
 	Transform turretTransform;
 
@@ -10,9 +11,11 @@ public class Tower : MonoBehaviour {
 
 	public int cost = 5;
 
+	// Fire speed
 	float fireCooldown = 0.5f;
 	float fireCooldownLeft = 0;
 
+	// Damage
 	public float damage = 1;
 	public float radius = 0;
 
@@ -24,7 +27,7 @@ public class Tower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		// TODO: Optimize this!
+		
 		Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
 
 		Enemy nearestEnemy = null;
