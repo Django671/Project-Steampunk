@@ -5,16 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuScenes : MonoBehaviour
 {
+    public GameObject MainMenuState;
+    public GameObject settingsMenu;
     public void PlayButton()
     {
         SceneManager.LoadScene("_SCENE_");
     }
 
-    public void OptionsButton()
-    {
-        SceneManager.LoadScene("OptionsMenu");
-    }
-
+   
     public void QuitButton()
     {
 #if UNITY_EDITOR
@@ -24,8 +22,15 @@ public class MenuScenes : MonoBehaviour
 #endif
     }
 
-    public void BackButton()
+    public void SettingMenutoggleON()
     {
-        SceneManager.LoadScene("MainMenuScreen");
+        MainMenuState.SetActive(false);
+        settingsMenu.SetActive(true);
+    }
+
+    public void SettingsMenutoggleOff()
+    {
+        MainMenuState.SetActive(true);
+        settingsMenu.SetActive(false);
     }
 }
