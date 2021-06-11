@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
 	{
 		if(target == null) 
 		{
-			// Our enemy went away!
+			// Enemy is gone
 			Destroy(gameObject);
 			return;
 		}
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
 
 		if(dir.magnitude <= distThisFrame) 
 		{
-			// We reached the node
+			// reached the node
 			DoBulletHit();
 		}
 		else 
@@ -60,7 +60,7 @@ public class Bullet : MonoBehaviour
 			foreach(Collider c in cols) {
 				Enemy e = c.GetComponent<Enemy>();
 				if(e != null) {
-					// TODO: You COULD do a falloff of damage based on distance, but that's rare for TD games
+					
 					e.GetComponent<Enemy>().TakeDamage(damage);
 				}
 			}

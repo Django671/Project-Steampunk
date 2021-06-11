@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour 
 {
@@ -34,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
 			bool didSpawn = false;
 
-			// Go through the wave comps until we find something to spawn;
+			// Go through the waves until we find something to spawn
 			foreach(WaveComponent wc in waveComps) 
 			{
 				if(wc.spawned < wc.num) 
@@ -60,7 +61,7 @@ public class EnemySpawner : MonoBehaviour
 				else 
 				{
 					// That was the last wave 
-					// I might add something here.
+					SceneManager.LoadScene("Win");
 				}
 
 				Destroy(gameObject);

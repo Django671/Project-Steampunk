@@ -15,9 +15,10 @@ public class Enemy : MonoBehaviour
 
 	public int moneyValue = 1;
 
-	// Use this for initialization
+	
 	void Start () 
 	{
+		// Find Path Nodes
 		pathGO = GameObject.Find("Path");
 	}
 
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
 			GetNextPathNode();
 			if(targetPathNode == null) 
 			{
-				// End of the path, No more nodes. Register as path reached!!!
+				// End of the path, No more nodes
 				ReachedGoal();
 				return;
 			}
@@ -70,13 +71,14 @@ public class Enemy : MonoBehaviour
 
 	void ReachedGoal() 
 	{
-		//  
+		//  Enemy has reached the final node. Remove a life and destroy GameObject
 		GameObject.FindObjectOfType<ScoreManager>().LoseLife();
 		Destroy(gameObject);
 	}
 
 	public void TakeDamage(float damage) 
 	{
+		// If Health less than '0' > die
 		health -= damage;
 		if(health <= 0) 
 		{
@@ -86,6 +88,7 @@ public class Enemy : MonoBehaviour
 
 	public void Die() 
 	{	
+		// Add money to moneyValue once dead.
 		GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
 		Destroy(gameObject);
 	}
