@@ -18,8 +18,8 @@ public class Setingsmenu : MonoBehaviour
   
     void Start()
     {
-    
-       
+        Screen.SetResolution(1980, 1080, true, 60);
+
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -41,9 +41,8 @@ public class Setingsmenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionsIndex;
         resolutionDropdown.RefreshShownValue();
 
-        resolutionIndex = PlayerPrefs.GetInt("ResoSave");
-        SetResolution();
-        resolutionDropdown.value = resolutionIndex;
+        
+       
 
         float volume = PlayerPrefs.GetFloat("volumesave");
         SetVolmue(volume);
@@ -66,9 +65,9 @@ public class Setingsmenu : MonoBehaviour
 
     public void SetResolution()
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width,resolution.height, Screen.fullScreen);
-        PlayerPrefs.SetInt("ResoSave", resolutionIndex);
+        // this function caused visual bugs so has been removed and set to good resolution for game to look good
+        Screen.SetResolution(1980, 1080, true, 60);
+
     }
 
     // contols volume from main mixer

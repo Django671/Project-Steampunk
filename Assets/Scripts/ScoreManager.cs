@@ -12,7 +12,11 @@ public class ScoreManager : MonoBehaviour
 	public Text moneyText;
 	public Text livesText;
 
-	public void LoseLife(int l = 1) 
+    private void Start()
+    {
+		Screen.SetResolution(1980, 1080, true, 60);
+	}
+    public void LoseLife(int l = 1) 
 	{
 		lives -= l;
 		// If Lives less than or Equal to 0. set game over function
